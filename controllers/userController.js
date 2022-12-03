@@ -36,13 +36,41 @@ export const registerUser = async ( req, res ) => {
 
             await User.create({ name, email, password : makeHash(password) });
 
-            validate('User register successfull', '/register', req, res);    
+            validate('User register successfull', '/login', req, res);    
 
         }
         
     } catch (error) {
 
         validate( error.message, '/register', req, res );    
+        
+    }
+
+}
+
+/**
+ * Login user
+ */
+ export const loginUser = async ( req, res ) => {
+    
+    try {
+
+        const { email, password} = req.body;
+
+        if ( !email || !password) {
+
+            validate('All fields are required', '/login', req, res);    
+            
+        } else {
+
+
+ 
+
+        }
+        
+    } catch (error) {
+
+        validate( error.message, '/login', req, res );    
         
     }
 
